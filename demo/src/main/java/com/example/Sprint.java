@@ -13,21 +13,22 @@ public abstract class Sprint {
     private ScrumMasterMember scrumMaster;
     private Pipeline linkedPipeline;
     private Document reviewDocument;
+    //notification 
 
     public void addBacklogItem(BackLogItem item) {
-        // Method implementation
+        backlogItems.add(item);
     }
 
     public void removeBacklogItem(BackLogItem item) {
-        // Method implementation
+        backlogItems.remove(item);
     }
 
     public void addTeamMember(TeamMember member) {
-        // Method implementation
+        sprintTeam.add(member);
     }
 
     public void start() {
-        // Method implementation
+        // Method implementation (iets met states)
     }
 
     public void finish() {
@@ -36,15 +37,16 @@ public abstract class Sprint {
 
 
     public void setScrumMaster(ScrumMasterMember master) {
-        // Method implementation
+        scrumMaster = master;
     }
 
     public void setPipeline(Pipeline pipeline) {
-        // Method implementation
+        linkedPipeline = pipeline;
     }
 
     public void cancelRelease() {
         // Method implementation
+        
     }
 
     public void retry() {
