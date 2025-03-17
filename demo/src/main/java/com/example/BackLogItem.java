@@ -27,6 +27,12 @@ public class BackLogItem {
     public BackLogItem(String title) {
         this.title = title;
         this.state = new ToDoState(this);
+
+        this.doingState = new DoingState(this);
+        this.readyForTestingState = new ReadyForTestingState(this);
+        this.testingState = new TestingState(this);
+        this.testedState = new TestedState(this);
+        this.doneState = new DoneState(this);
     }
 
     public void addActivity(Activity activity) {

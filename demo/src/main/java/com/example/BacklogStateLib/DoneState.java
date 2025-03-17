@@ -1,8 +1,12 @@
 package com.example.BacklogStateLib;
 
+import com.example.BackLogItem;
+
 public class DoneState implements IBacklogState {
+    private BackLogItem item;
     
-    public DoneState() {
+    public DoneState(BackLogItem item) {
+        this.item = item;
         
     }
     
