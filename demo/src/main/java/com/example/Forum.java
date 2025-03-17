@@ -1,5 +1,12 @@
 package com.example;
 
-public class Forum {
+import java.util.Date;
+import java.util.List;
 
+public class Forum {
+    String title;
+
+    List<Discussion> discussions;
+
+    Date creationDate = new Date();
 }
