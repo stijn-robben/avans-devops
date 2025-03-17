@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BackLogItem {
     private String title;
-    private BacklogState state;
+    //private BacklogState state;
     private TeamMember assignedDeveloper;
     private List<Thread> threads;
     private List<Activity> activities;
