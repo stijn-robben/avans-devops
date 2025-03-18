@@ -1,8 +1,5 @@
 package com.example;
 
-import com.example.BackLogItem;
-import com.example.BacklogState.IBacklogState;
-import com.example.BacklogState.ToDoState;
 import com.example.Notification.NotificationManager;
 import com.example.Notification.SlackNotificationAdapter;
 import com.example.Notification.SlackNotificationService;
@@ -20,7 +17,7 @@ public class Main {
 
         //Member works
         TesterMember tester = new TesterMember("John Doe");
-        tester.getName();
+        System.out.println(tester.getName());
 
         //Backlog state works
         BackLogItem backlogItem = new BackLogItem("Implement feature X");
@@ -35,5 +32,10 @@ public class Main {
         pipeline.runAllSteps();
 
 
+        //Sprint state works
+        DeploymentSprint sprint = new DeploymentSprint("Sprint 1", null, null);
+        sprint.startSprintItem();
+        sprint.finishSprintItem();
+        sprint.reviewSprintItem();
     }
 }
