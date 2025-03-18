@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.Date;
 
+import com.example.TeamMember.TeamMember;
+
 public class Message {
     private String content;
     private TeamMember author;

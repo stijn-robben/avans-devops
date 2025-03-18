@@ -3,6 +3,10 @@ package com.example;
 import java.util.Date;
 import java.util.List;
 
+import com.example.Pipeline.Pipeline;
+import com.example.TeamMember.ScrumMasterMember;
+import com.example.TeamMember.TeamMember;
+
 public abstract class Sprint {
     private String name;
     private Date startDate;

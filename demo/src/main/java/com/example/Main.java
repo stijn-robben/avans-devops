@@ -1,12 +1,12 @@
 package com.example;
 
-import com.example.NotificationLib.NotificationManager;
-import com.example.NotificationLib.SlackNotificationAdapter;
-import com.example.NotificationLib.SlackNotificationService;
-import com.example.TeamMemberLib.TesterMember;
-import com.example.BacklogStateLib.IBacklogState;
-import com.example.BacklogStateLib.ToDoState;
 import com.example.BackLogItem;
+import com.example.BacklogState.IBacklogState;
+import com.example.BacklogState.ToDoState;
+import com.example.Notification.NotificationManager;
+import com.example.Notification.SlackNotificationAdapter;
+import com.example.Notification.SlackNotificationService;
+import com.example.TeamMember.TesterMember;
 
 public class Main {
     public static void main(String[] args) {

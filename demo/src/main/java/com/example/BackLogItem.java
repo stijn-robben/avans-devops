@@ -2,13 +2,14 @@ package com.example;
 
 import java.util.List;
 
-import com.example.BacklogStateLib.DoingState;
-import com.example.BacklogStateLib.DoneState;
-import com.example.BacklogStateLib.IBacklogState;
-import com.example.BacklogStateLib.ReadyForTestingState;
-import com.example.BacklogStateLib.TestedState;
-import com.example.BacklogStateLib.TestingState;
-import com.example.BacklogStateLib.ToDoState;
+import com.example.BacklogState.DoingState;
+import com.example.BacklogState.DoneState;
+import com.example.BacklogState.IBacklogState;
+import com.example.BacklogState.ReadyForTestingState;
+import com.example.BacklogState.TestedState;
+import com.example.BacklogState.TestingState;
+import com.example.BacklogState.ToDoState;
+import com.example.TeamMember.TeamMember;
 
 public class BackLogItem {
     private ToDoState toDoState;

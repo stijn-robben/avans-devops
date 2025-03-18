@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.TeamMember.TeamMember;
+
 public class Activity {
     private String title;
     private boolean done;

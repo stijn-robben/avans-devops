@@ -2,7 +2,9 @@ package com.example;
 
 import java.util.List;
 
-import com.example.TeamMemberLib.ProductOwnerMember;
+import com.example.TeamMember.ProductOwnerMember;
+import com.example.TeamMember.TeamMember;
+
 
 public class Project {
     private String name;
