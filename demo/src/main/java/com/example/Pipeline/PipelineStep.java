@@ -16,8 +16,8 @@ public abstract class PipelineStep {
         // Method implementation
     }
 
-    protected void publishResult() {
-        // Method implementation
+    protected boolean publishResult() {
+        return false;
     }
 
     public boolean isSuccessful() {
