@@ -30,7 +30,7 @@ public class BuildStep extends PipelineStep {
 
     @Override
     public boolean publishResult() {
-        return false;
+        return result;
     }
 
 }

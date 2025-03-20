@@ -8,22 +8,26 @@ public class Activity {
     private int estimatedHours;
     private TeamMember assignedDeveloper;
 
+    public Activity(String title, int estimatedHours, TeamMember assignedDeveloper) {
+        this.title = title;
+        this.done = false;
+        this.estimatedHours = estimatedHours;
+        this.assignedDeveloper = assignedDeveloper;
+    }
+
     public boolean isDone() {
-        // Method implementation
         return false;
     }
 
     public void setDone(boolean done) {
-        // Method implementation
+        this.done = done;
     }
 
     public int getTotalEstimatedHours() {
-        // Method implementation
-        return 0;
+        return estimatedHours;
     }
 
     public String getTitle() {
-        // Method implementation
-        return null;
+        return title;
     }
 }

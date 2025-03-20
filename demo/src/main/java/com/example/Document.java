@@ -7,13 +7,21 @@ public class Document {
     private String content;
     private Date uploadDate;
 
+    public Document(String filename, String content) {
+        this.filename = filename;
+        this.content = content;
+        this.uploadDate = new Date();
+    }
+
     public String getContent() {
-        // Method implementation
-        return null;
+        return content;
     }
 
     public String getFileName() {
-        // Method implementation
-        return null;
+        return filename;
+    }
+
+    public Date getUploadDate() {
+        return uploadDate;
     }
 }

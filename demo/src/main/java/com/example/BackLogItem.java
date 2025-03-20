@@ -37,19 +37,19 @@ public class BackLogItem {
     }
 
     public void addActivity(Activity activity) {
-        // Method implementation
+        activities.add(activity);
     }
 
     public void removeActivity(Activity activity) {
-        // Method implementation
+        activities.remove(activity);
     }
 
     public void assignDeveloper(TeamMember developer) {
-        // Method implementation
+        this.assignedDeveloper = developer;
     }
 
     public void addDiscussionThread(Thread thread) {
-        // Method implementation
+        threads.add(thread);
     }
 
     public void startBacklogItem() {

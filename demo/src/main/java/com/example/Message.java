@@ -10,28 +10,30 @@ public class Message {
     private Date timestamp;
     private Thread thread;
 
+    public Message(String content, TeamMember author, Thread thread) {
+        this.content = content;
+        this.author = author;
+        this.timestamp = new Date();
+        this.thread = thread;
+    }
+
     public String getContent() {
-        // Method implementation
-        return null;
+        return content;
     }
 
     public TeamMember getAuthor() {
-        // Method implementation
-        return null;
+        return author;
     }
 
     public Date getTimestamp() {
-        // Method implementation
-        return null;
+        return timestamp;
     }
 
     public BackLogItem getBacklogItem() {
-        // Method implementation
-        return null;
+        return thread.getBacklogItem();
     }
 
     public Thread getThreadItem() {
-        // Method implementation
-        return null;
+        return thread;  
     }
 }   

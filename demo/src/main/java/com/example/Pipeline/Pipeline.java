@@ -35,8 +35,7 @@ public class Pipeline {
             if (!step.publishResult()) {
                 System.out.println("Step failed: " + step.getClass().getSimpleName() + "\nExecution steps stopped");
                 break;
-                
-            }
+            } 
         }
     }
 

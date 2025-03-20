@@ -14,25 +14,31 @@ public class Project {
     private IVersionControl versionControl;
     private Forum forum;
 
+    public Project(String name, ProductOwnerMember productOwner) {
+        this.name = name;
+        this.productOwner = productOwner;
+        forum = new Forum("Forum");
+        //versionControl = new GitVersionControl();
+    }
+
+
     public void addSprint(Sprint sprint) {
-        // Method implementation
+        sprints.add(sprint);
     }
 
     public void addTeamMember(TeamMember teamMember) {
-        // Method implementation
+        teamMembers.add(teamMember);
     }
 
     public List<TeamMember> getTeamMembers() {
-        // Method implementation
-        return null;
+        return teamMembers;
     }
 
     public List<Sprint> getSprints() {
-        // Method implementation
-        return null;
+        return sprints;
     }
 
     public void setProductOwner(ProductOwnerMember owner) {
-        // Method implementation
+        this.productOwner = owner; 
     }
 }

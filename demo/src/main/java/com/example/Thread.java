@@ -10,15 +10,26 @@ public class Thread {
     private boolean locked;
     private BackLogItem backlogItem;
 
+    public Thread(String title, BackLogItem backlogItem) {
+        this.title = title;
+        this.creationDate = new Date();
+        this.backlogItem = backlogItem;
+        this.locked=false;
+    }
+
     public void addMessage(Message message) {
-        // Method implementation
+        messages.add(message);
     }
 
     public void lockDiscussion() {
-        // Method implementation
+        this.locked = true;
     }
 
     public void unlockDiscussion() {
-        // Method implementation
+        this.locked = false;
+    }
+
+    public BackLogItem getBacklogItem(){
+        return backlogItem;
     }
 }
