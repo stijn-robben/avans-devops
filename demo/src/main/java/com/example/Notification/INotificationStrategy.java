@@ -1,6 +1,8 @@
 package com.example.Notification;
 
-public interface INotificationStrategy {
+import com.example.Observer;
+
+public interface INotificationStrategy extends Observer {
     
     public void sendNotification(String message);
 

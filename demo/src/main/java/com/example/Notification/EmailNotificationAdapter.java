@@ -13,4 +13,9 @@ public class EmailNotificationAdapter implements INotificationStrategy{
         emailNotificationService.sendEmail(message);
     }
 
+    @Override
+    public void update(String message) {
+        this.sendNotification(message);
+    }
+
 }
