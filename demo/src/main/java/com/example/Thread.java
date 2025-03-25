@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Thread {
         this.title = title;
         this.creationDate = new Date();
         this.backlogItem = backlogItem;
-        this.locked=false;
+        this.locked = false;
+        this.messages = new ArrayList<Message>();
     }
 
     public void addMessage(Message message) {
@@ -35,5 +37,11 @@ public class Thread {
 
     public BackLogItem getBacklogItem(){
         return backlogItem;
+    }
+
+    public void printMessages() {
+        for (Message message : messages) {
+            System.out.println(message.getAuthor().getName() + " said: " + message.getContent());
+        }
     }
 }
