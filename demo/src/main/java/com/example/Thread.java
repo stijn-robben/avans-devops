@@ -18,7 +18,11 @@ public class Thread {
     }
 
     public void addMessage(Message message) {
-        messages.add(message);
+        if (locked) {
+            System.out.println("Thread is locked, you cannot add a message");
+        } else {
+            messages.add(message);
+        }
     }
 
     public void lockDiscussion() {

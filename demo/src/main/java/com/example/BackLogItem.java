@@ -98,10 +98,18 @@ public class BackLogItem extends CompositeComponent {
 
     public void deployItem() {
         state.deployItem();
+
+        for (Thread thread : threads) {
+            thread.lockDiscussion();
+        }
     }
 
     public void revertToTodo() {
         state.revertToTodo();
+
+        for (Thread thread : threads) {
+            thread.unlockDiscussion();
+        }
     }
 
     public void revertToReadyForTesting() {

@@ -37,7 +37,8 @@ public class DoneState implements IBacklogState {
 
     @Override
     public void revertToTodo() {
-        System.out.println("The item is in the done state.");
+        System.out.println("Backlog item is reverted to the todo state.");
+        item.setState(item.getToDoState());
     }
 
     @Override
