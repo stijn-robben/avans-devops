@@ -1,5 +1,7 @@
 package com.example.Pipeline;
 
+import com.example.Subject;
+
 public abstract class PipelineStep {
     private String name;
     private boolean successful;

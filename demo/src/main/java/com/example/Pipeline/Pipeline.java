@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Pipeline {
+import com.example.Subject;
+
+public class Pipeline extends Subject {
     private String name;
     private List<PipelineStep> steps;
     private PipelineStepFactory stepFactory;
@@ -37,6 +39,7 @@ public class Pipeline {
                 break;
             } 
         }
+        notifyObservers("Pipeline successfully deployed");
     }
 
     

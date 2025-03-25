@@ -11,7 +11,7 @@ import com.example.BacklogState.TestingState;
 import com.example.BacklogState.ToDoState;
 import com.example.TeamMember.TeamMember;
 
-public class BackLogItem extends CompositeComponent{
+public class BackLogItem extends CompositeComponent, Subject{
     private ToDoState toDoState;
     private DoingState doingState;
     private ReadyForTestingState readyForTestingState;
@@ -65,6 +65,7 @@ public class BackLogItem extends CompositeComponent{
 
     public void finishImplementingItem() {
         state.finishImplementingItem();
+        notifyObservers("Backlog item " + title + " is ready for testing");
     }
 
     public void startTestingItem() {
