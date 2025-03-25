@@ -11,7 +11,7 @@ import com.example.BacklogState.TestingState;
 import com.example.BacklogState.ToDoState;
 import com.example.TeamMember.TeamMember;
 
-public class BackLogItem {
+public class BackLogItem extends Subject {
     private ToDoState toDoState;
     private DoingState doingState;
     private ReadyForTestingState readyForTestingState;
@@ -58,6 +58,7 @@ public class BackLogItem {
 
     public void finishImplementingItem() {
         state.finishImplementingItem();
+        notifyObservers("Backlog item " + title + " is ready for testing");
     }
 
     public void startTestingItem() {

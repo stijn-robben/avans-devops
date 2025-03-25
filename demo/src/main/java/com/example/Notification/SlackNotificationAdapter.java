@@ -13,9 +13,4 @@ public class SlackNotificationAdapter implements INotificationStrategy {
         slackNotificationService.sendSlackNotification(message);
     }
 
-    @Override
-    public void update(String message) {
-        this.sendNotification(message);
-    }
-
 }

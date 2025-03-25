@@ -1,6 +1,8 @@
 package com.example.Notification;
 
-public class NotificationManager {
+import com.example.Observer;
+
+public class NotificationManager implements Observer {
     
     private INotificationStrategy notificationStrategy;
     
@@ -10,6 +12,11 @@ public class NotificationManager {
     
     public void sendNotification(String message) {
         notificationStrategy.sendNotification(message);
+    }
+
+    @Override
+    public void update(String message) {
+        this.sendNotification(message);
     }
 
 }

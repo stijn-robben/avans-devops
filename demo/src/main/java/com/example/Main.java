@@ -22,12 +22,14 @@ public class Main {
 
         //Backlog state works
         BackLogItem backlogItem = new BackLogItem("Implement feature X");
+        backlogItem.addObserver(notificationManager);
         backlogItem.startBacklogItem();
-        backlogItem.finishTestingItem();
+        backlogItem.finishImplementingItem();
 
         
         
         Pipeline pipeline = new Pipeline("CI/CD Pipeline");
+        pipeline.addObserver(notificationManager);
         pipeline.runAllSteps();
 
 
