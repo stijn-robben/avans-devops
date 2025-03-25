@@ -11,7 +11,7 @@ import com.example.BacklogState.TestingState;
 import com.example.BacklogState.ToDoState;
 import com.example.TeamMember.TeamMember;
 
-public class BackLogItem {
+public class BackLogItem extends CompositeComponent{
     private ToDoState toDoState;
     private DoingState doingState;
     private ReadyForTestingState readyForTestingState;
@@ -36,6 +36,13 @@ public class BackLogItem {
         this.doneState = new DoneState(this);
     }
 
+    public String getAssignedDeveloperName() {
+        return assignedDeveloper.getName();
+    }
+
+    public String getTitle() {
+        return title;
+    }
     public void addActivity(Activity activity) {
         activities.add(activity);
     }
@@ -110,5 +117,11 @@ public class BackLogItem {
     
     public ToDoState getTodoState() {
         return toDoState;
+    }
+
+    public void acceptVisitor(Visitor visitor)
+    {
+        visitor.visitBacklogItem(this);
+        super.acceptVisitor(visitor);
     }
 }

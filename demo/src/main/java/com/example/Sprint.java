@@ -9,7 +9,7 @@ import com.example.TeamMember.TeamMember;
 
 import com.example.SprintState.*;
 
-public abstract class Sprint {
+public abstract class Sprint extends CompositeComponent{
     private CreatedState createdState;
     private InProgressState inProgressState;
     private FinishedState finishedState;
@@ -46,6 +46,10 @@ public abstract class Sprint {
         this.releasedState = new ReleasedState(this);
         this.closedState = new ClosedState(this);
 
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addBacklogItem(BackLogItem item) {
@@ -142,4 +146,11 @@ public abstract class Sprint {
     public ReleasedState getReleasedState() {
         return releasedState;
     }
+
+    public void acceptVisitor(Visitor visitor)
+    {
+        visitor.visitSprint(this);
+        super.acceptVisitor(visitor);
+    }
+
 }

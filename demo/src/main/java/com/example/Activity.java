@@ -2,7 +2,7 @@ package com.example;
 
 import com.example.TeamMember.TeamMember;
 
-public class Activity {
+public class Activity extends CompositeComponent{
     private String title;
     private boolean done;
     private int estimatedHours;
@@ -19,6 +19,10 @@ public class Activity {
         return false;
     }
 
+    public TeamMember getAssignedDeveloper() {
+        return assignedDeveloper;
+    }
+
     public void setDone(boolean done) {
         this.done = done;
     }
@@ -29,5 +33,11 @@ public class Activity {
 
     public String getTitle() {
         return title;
+    }
+
+    public void acceptVisitor(Visitor visitor)
+    {
+        visitor.visitActivity(this);
+        super.acceptVisitor(visitor);
     }
 }
