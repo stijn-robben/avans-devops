@@ -25,10 +25,19 @@ public class Main {
 
         //Backlog state works
         BackLogItem backlogItem = new BackLogItem("Implement feature X");
+        Thread thread = new Thread("Discussion", backlogItem);
+        backlogItem.addDiscussionThread(thread);
+        Message message = new Message("Hello", tester);
+        
         backlogItem.addObserver(notificationManager);
         backlogItem.startBacklogItem();
         backlogItem.finishImplementingItem();
-
+        backlogItem.startTestingItem();
+        backlogItem.finishTestingItem();
+        thread.addMessage(message);
+        backlogItem.deployItem();
+        thread.addMessage(message);
+        thread.printMessages();
         
         
         Pipeline pipeline = new Pipeline("CI/CD Pipeline");
@@ -78,7 +87,5 @@ public class Main {
         // Create the visitor and use it
         FormattedPrintVisitor printVisitor = new FormattedPrintVisitor();
         sprint1.acceptVisitor(printVisitor);
-        
-
     }
 }
