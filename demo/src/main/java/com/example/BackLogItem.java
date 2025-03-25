@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.BacklogState.DoingState;
@@ -11,7 +12,8 @@ import com.example.BacklogState.TestingState;
 import com.example.BacklogState.ToDoState;
 import com.example.TeamMember.TeamMember;
 
-public class BackLogItem extends CompositeComponent, Subject{
+public class BackLogItem extends CompositeComponent {
+
     private ToDoState toDoState;
     private DoingState doingState;
     private ReadyForTestingState readyForTestingState;
@@ -22,13 +24,17 @@ public class BackLogItem extends CompositeComponent, Subject{
     private String title;
     private IBacklogState state;
     private TeamMember assignedDeveloper;
-    private List<Thread> threads;
-    private List<Activity> activities;
+    private List<Thread> threads = new ArrayList<>();
+    private List<Activity> activities = new ArrayList<>();
+
+    // Composition: Use Subject instance
+    private final Subject subject = new Subject() {};
 
     public BackLogItem(String title) {
         this.title = title;
         this.state = new ToDoState(this);
 
+        this.toDoState = (ToDoState) state;
         this.doingState = new DoingState(this);
         this.readyForTestingState = new ReadyForTestingState(this);
         this.testingState = new TestingState(this);
@@ -36,13 +42,27 @@ public class BackLogItem extends CompositeComponent, Subject{
         this.doneState = new DoneState(this);
     }
 
+    // Observer methods delegated to Subject instance
+    public void addObserver(Observer observer) {
+        subject.addObserver(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        subject.removeObserver(observer);
+    }
+
+    public void notifyObservers(String message) {
+        subject.notifyObservers(message);
+    }
+
     public String getAssignedDeveloperName() {
-        return assignedDeveloper.getName();
+        return assignedDeveloper != null ? assignedDeveloper.getName() : "Unassigned";
     }
 
     public String getTitle() {
         return title;
     }
+
     public void addActivity(Activity activity) {
         activities.add(activity);
     }
@@ -65,7 +85,7 @@ public class BackLogItem extends CompositeComponent, Subject{
 
     public void finishImplementingItem() {
         state.finishImplementingItem();
-        notifyObservers("Backlog item " + title + " is ready for testing");
+        notifyObservers("Backlog item \"" + title + "\" is ready for testing");
     }
 
     public void startTestingItem() {
@@ -115,13 +135,8 @@ public class BackLogItem extends CompositeComponent, Subject{
     public DoneState getDoneState() {
         return doneState;
     }
-    
-    public ToDoState getTodoState() {
-        return toDoState;
-    }
 
-    public void acceptVisitor(Visitor visitor)
-    {
+    public void acceptVisitor(Visitor visitor) {
         visitor.visitBacklogItem(this);
         super.acceptVisitor(visitor);
     }

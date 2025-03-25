@@ -39,7 +39,7 @@ public class TestingState implements IBacklogState{
     @Override
     public void revertToTodo() {
         System.out.println("Reverted item from testing to todo");
-        item.setState(item.getTodoState());
+        item.setState(item.getToDoState());
     }
 
     @Override
