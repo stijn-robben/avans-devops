@@ -121,7 +121,6 @@ public class Main {
         FormattedPrintVisitor printVisitor = new FormattedPrintVisitor();
         sprint1.acceptVisitor(printVisitor);
 
-        System.out.println("Team activities and backlog items processed!\n");
     }
 
     // Version Control System Test (Git Adapter)
