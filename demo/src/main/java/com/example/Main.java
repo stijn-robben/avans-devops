@@ -64,7 +64,7 @@ public class Main {
         
         backlogItem.startBacklogItem();
         backlogItem.finishImplementingItem();
-        System.out.println("Backlog item state transitions completed!\n");
+        
     }
 
     // CI/CD Pipeline Test
