@@ -136,5 +136,7 @@ public class Main {
         git.merge("feature/login", "main");
 
         System.out.println("Git version control operations completed!\n");
+
+        System.out.println("=== Project System Test Completed ===");
     }
 }
