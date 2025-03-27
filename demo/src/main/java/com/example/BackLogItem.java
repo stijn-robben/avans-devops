@@ -77,11 +77,20 @@ public class BackLogItem extends CompositeComponent {
     }
 
     public void assignDeveloper(TeamMember developer) {
+        if (assignedDeveloper != null) {
+            notifyObservers(assignedDeveloper.getName() + " has been unassigned from " + title);
+        }
+        notifyObservers(title + " has been assigned to " + developer.getName());
         this.assignedDeveloper = developer;
     }
 
     public void addDiscussionThread(Thread thread) {
-        threads.add(thread);
+        if (this.state != doneState) {
+            threads.add(thread);
+        } else {
+            System.out.println("Cannot add discussion thread, item is already done");
+        }
+        
     }
 
     public void startBacklogItem() {
@@ -102,10 +111,17 @@ public class BackLogItem extends CompositeComponent {
     }
 
     public void deployItem() {
-        state.deployItem();
+        for (Activity activity : activities) {
+            if (activity.isDone()) {
+                state.deployItem();
 
-        for (Thread thread : threads) {
-            thread.lockDiscussion();
+            for (Thread thread : threads) {
+                thread.lockDiscussion();
+            }
+            } else {
+                System.out.println("Cannot deploy item, all activities must be completed first");
+                return;
+            }
         }
     }
 

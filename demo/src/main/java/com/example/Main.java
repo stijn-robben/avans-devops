@@ -117,6 +117,7 @@ public class Main {
 
         // Visitor print
         FormattedPrintVisitor printVisitor = new FormattedPrintVisitor();
+        printVisitor.setHeader("Sprint 1 Backlog Items and Activities");
         sprint1.acceptVisitor(printVisitor);
 
     }
