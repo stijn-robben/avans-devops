@@ -3,10 +3,8 @@ package com.example.SprintState;
 import com.example.Sprint;
 
 public class ClosedState implements ISprintState {
-    private Sprint item;
 
     public ClosedState(Sprint item) {
-        this.item = item;
     }
 
     @Override

@@ -3,10 +3,8 @@ package com.example.SprintState;
 import com.example.Sprint;
 
 public class ReleasedState implements ISprintState {
-    private Sprint item;
 
     public ReleasedState(Sprint item) {
-        this.item = item;
     }
 
     @Override
