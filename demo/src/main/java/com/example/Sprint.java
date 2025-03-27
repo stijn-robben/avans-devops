@@ -29,7 +29,9 @@ public abstract class Sprint extends CompositeComponent{
     private ScrumMasterMember scrumMaster;
     private Pipeline linkedPipeline;
     private Document reviewDocument;
+
     //notification 
+    private final Subject subject = new Subject() {};
 
     public Sprint(String name, Date startDate, Date endDate) {
         this.name = name;
@@ -46,6 +48,43 @@ public abstract class Sprint extends CompositeComponent{
         this.releasedState = new ReleasedState(this);
         this.closedState = new ClosedState(this);
 
+    }
+
+    // Observer methods delegated to Subject instance
+    public void addObserver(Observer observer) {
+        subject.addObserver(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        subject.removeObserver(observer);
+    }
+
+    public void notifyObservers(String message) {
+        subject.notifyObservers(message);
+    }
+
+    public void setStartDate(Date startDate) {
+        if (state == createdState) {
+            this.startDate = startDate;
+        } else {
+            System.out.println("Cannot change start date of sprint when it is not in created state");
+        }
+    }
+
+    public void setEndDate(Date endDate) {
+        if (state == createdState) {
+            this.endDate = endDate;
+        } else {
+            System.out.println("Cannot change end date of sprint when it is not in created state");
+        }
+    }
+
+    public void setName (String name) {
+        if (state == createdState) {
+            this.name = name;
+        } else {
+            System.out.println("Cannot change name of sprint when it is not in created state");
+        }
     }
 
     public String getName() {
@@ -73,11 +112,19 @@ public abstract class Sprint extends CompositeComponent{
     }
 
     public void addBacklogItem(BackLogItem item) {
-        backlogItems.add(item);
+        if (state == createdState) {
+            backlogItems.add(item);
+        } else {
+            System.out.println("Cannot add backlog item to sprint when it is not in created state");
+        }
     }
 
     public void removeBacklogItem(BackLogItem item) {
-        backlogItems.remove(item);
+        if (state == createdState) {
+            backlogItems.remove(item);
+        } else {
+            System.out.println("Cannot remove backlog item from sprint when it is not in created state");
+        }
     }
 
     public void addTeamMember(TeamMember member) {
@@ -94,14 +141,10 @@ public abstract class Sprint extends CompositeComponent{
     }
 
     public void cancelRelease() {
-        // Method implementation
+        notifyObservers(name + " has been cancelled");
+        state.cancelSprintItem();
         
     }
-
-    public void retry() {
-        // Method implementation
-    }
-
     
     public void startSprintItem() {
         state.startSprintItem();
@@ -136,7 +179,11 @@ public abstract class Sprint extends CompositeComponent{
     }
 
     public void reviewSprintItem() {
-        state.reviewSprintItem();
+        if (reviewDocument != null) {
+            state.reviewSprintItem();
+        } else {
+            System.out.println("Cannot review sprint without a review document");
+        }
     }
 
     public void finishReviewingSprintItem() {
@@ -152,7 +199,13 @@ public abstract class Sprint extends CompositeComponent{
     }
 
     public void releaseSprintItem() {
-        state.releaseSprintItem();
+        if (linkedPipeline != null) {
+            linkedPipeline.runAllSteps();
+            state.releaseSprintItem();
+        } else {
+            System.out.println("Cannot release sprint without a linked pipeline");
+        }
+        
     }
 
     public void finishReleasingSprintItem() {
