@@ -1,9 +1,6 @@
 package com.example.Pipeline;
 
-import com.example.Subject;
-
 public abstract class PipelineStep {
-    private String name;
     private boolean successful;
 
     public void runStep() {
@@ -24,6 +21,6 @@ public abstract class PipelineStep {
 
     public boolean isSuccessful() {
         // Method implementation
-        return false;
+        return successful;
     }
 }

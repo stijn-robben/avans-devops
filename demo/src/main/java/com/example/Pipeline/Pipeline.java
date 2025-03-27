@@ -42,5 +42,7 @@ public class Pipeline extends Subject {
         notifyObservers("Pipeline successfully deployed");
     }
 
-    
+    public String getName() {
+        return name;
+    }
 }

@@ -16,7 +16,7 @@ public class Activity extends CompositeComponent{
     }
 
     public boolean isDone() {
-        return false;
+        return this.done;
     }
 
     public TeamMember getAssignedDeveloper() {
