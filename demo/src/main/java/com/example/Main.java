@@ -2,8 +2,6 @@ package com.example;
 
 import java.util.Date;
 
-import com.example.BackLogItem;
-import com.example.BacklogState.ToDoState;
 import com.example.Notification.NotificationManager;
 import com.example.Notification.SlackNotificationAdapter;
 import com.example.Notification.SlackNotificationService;

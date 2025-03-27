@@ -17,10 +17,25 @@ public class Project {
     public Project(String name, ProductOwnerMember productOwner) {
         this.name = name;
         this.productOwner = productOwner;
-        forum = new Forum("Forum");
+        forum = new Forum(name + "Forum");
         //versionControl = new GitVersionControl();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public IVersionControl getVersionControl() {
+        return versionControl;
+    }
+
+    public ProductOwnerMember getProductOwner() {
+        return productOwner;
+    }
+
+    public Forum getForum() {
+        return forum;
+    }
 
     public void addSprint(Sprint sprint) {
         sprints.add(sprint);

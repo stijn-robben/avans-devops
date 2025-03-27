@@ -52,6 +52,26 @@ public abstract class Sprint extends CompositeComponent{
         return name;
     }
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public ScrumMasterMember getScrumMaster() {
+        return scrumMaster;
+    }
+
+    public Pipeline getLinkedPipeline() {
+        return linkedPipeline;
+    }
+
+    public Document getReviewDocument() {
+        return reviewDocument;
+    }
+
     public void addBacklogItem(BackLogItem item) {
         backlogItems.add(item);
     }

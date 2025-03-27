@@ -19,6 +19,14 @@ public class Thread {
         this.messages = new ArrayList<Message>();
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
     public void addMessage(Message message) {
         if (locked) {
             System.out.println("Thread is locked, you cannot add a message");
