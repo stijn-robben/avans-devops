@@ -46,4 +46,9 @@ public class DoneState implements IBacklogState {
         System.out.println("The item is in the done state.");
     }
 
+    @Override
+    public String toString() {
+        return "Done";
+    }
+
 }

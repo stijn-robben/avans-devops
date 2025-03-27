@@ -8,6 +8,7 @@ public abstract class TeamMember {
     }
 
     public String getName() {
+        System.out.println(name);
         return name;
     }
 }

@@ -45,4 +45,9 @@ public class ReadyForTestingState implements IBacklogState {
         System.out.println("The item is in the ready for testing state");
     }
     
+    @Override
+    public String toString() {
+        return "ReadyForTesting";
+    }
+
 }

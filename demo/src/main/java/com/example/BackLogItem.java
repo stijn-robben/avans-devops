@@ -56,6 +56,7 @@ public class BackLogItem extends CompositeComponent {
     }
 
     public String getAssignedDeveloperName() {
+        
         return assignedDeveloper != null ? assignedDeveloper.getName() : "Unassigned";
     }
 
@@ -69,6 +70,10 @@ public class BackLogItem extends CompositeComponent {
 
     public void removeActivity(Activity activity) {
         activities.remove(activity);
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
     }
 
     public void assignDeveloper(TeamMember developer) {
@@ -142,6 +147,10 @@ public class BackLogItem extends CompositeComponent {
 
     public DoneState getDoneState() {
         return doneState;
+    }
+
+    public IBacklogState getState(){
+        return state;
     }
 
     public void acceptVisitor(Visitor visitor) {

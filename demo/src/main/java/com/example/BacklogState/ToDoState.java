@@ -44,5 +44,11 @@ public class ToDoState implements IBacklogState {
     public void revertToReadyForTesting() {
         System.out.println("The item is still in the to do state");
     }
+
+    @Override
+    public String toString() {
+        return "ToDo";
+    }
+
     
 }

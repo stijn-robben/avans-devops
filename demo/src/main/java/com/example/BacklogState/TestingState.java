@@ -47,4 +47,10 @@ public class TestingState implements IBacklogState{
         System.out.println("The item is in the testing state");
     }
 
+    @Override
+    public String toString() {
+        return "Testing";
+    }
+
+
 }

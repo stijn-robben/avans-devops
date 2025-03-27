@@ -46,6 +46,10 @@ public class DoingState implements IBacklogState {
         System.out.println("The item is in the doing state");
     }
     
-    
+    @Override
+    public String toString() {
+        return "Doing";
+    }
+
     
 }

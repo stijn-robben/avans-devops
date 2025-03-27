@@ -22,6 +22,7 @@ public class TestedState implements IBacklogState {
     }
     
     public void finishTestingItem() {
+        
         System.out.println("The item is in the tested state");
     }
     
@@ -39,6 +40,11 @@ public class TestedState implements IBacklogState {
     public void revertToReadyForTesting() {
         System.out.println("Reverted item from tested to ready for testing");
         item.setState(item.getReadyForTestingState());
+    }
+
+    @Override
+    public String toString() {
+        return "Tested";
     }
 
 }
