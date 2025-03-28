@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Discussion {
@@ -11,6 +12,7 @@ public class Discussion {
     public Discussion(String title) {
         this.title = title;
         this.creationDate = new Date();
+        this.threads = new ArrayList<Thread>();
     }
 
     public void addThread(Thread thread) {
@@ -33,5 +35,15 @@ public class Discussion {
         }
     }
 
+    public List<Thread> getThreads() {
+        return threads;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
 }

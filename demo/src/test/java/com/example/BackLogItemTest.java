@@ -58,4 +58,39 @@ class BackLogItemTest {
         backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
         assertEquals("ToDo", backlogItem.getState().toString(), "Backlog item moet in ToDo status staan.");
     }
+
+    @Test
+    void testValidStateTransition_ToDone() {
+        backlogItem.startBacklogItem();
+        backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
+        backlogItem.startTestingItem();
+        backlogItem.finishTestingItem();
+        backlogItem.deployItem();
+        assertEquals("Done", backlogItem.getState().toString(), "Backlog item moet in Done status staan.");
+    }
+
+    @Test
+    void testInValidStateTransition_ToDone() {
+        Activity activity = new Activity("Write unit tests", 12, new TesterMember("Alice"));
+        backlogItem.addActivity(activity); // Voeg een activiteit toe
+        backlogItem.startBacklogItem();
+        backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
+        backlogItem.startTestingItem();
+        backlogItem.finishTestingItem();
+        backlogItem.deployItem();
+        assertEquals("Tested", backlogItem.getState().toString(), "Backlog item moet in Done status staan.");
+    }
+
+    @Test
+    void testValidStateTransition_ToDone_Activities() {
+        Activity activity = new Activity("Write unit tests", 12, new TesterMember("Alice"));
+        backlogItem.addActivity(activity); // Voeg een activiteit toe
+        backlogItem.startBacklogItem();
+        backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
+        backlogItem.startTestingItem();
+        backlogItem.finishTestingItem();
+        activity.setDone(true); // Markeer de activiteit als voltooid
+        backlogItem.deployItem();
+        assertEquals("Done", backlogItem.getState().toString(), "Backlog item moet in Done status staan.");
+    }
 }

@@ -40,6 +40,8 @@ public class BackLogItem extends CompositeComponent {
         this.testingState = new TestingState(this);
         this.testedState = new TestedState(this);
         this.doneState = new DoneState(this);
+
+        this.activities = new ArrayList<>();
     }
 
     // Observer methods delegated to Subject instance
@@ -111,17 +113,21 @@ public class BackLogItem extends CompositeComponent {
     }
 
     public void deployItem() {
-        for (Activity activity : activities) {
-            if (activity.isDone()) {
-                state.deployItem();
-
-            for (Thread thread : threads) {
-                thread.lockDiscussion();
+        if(!activities.isEmpty()) {
+            for (Activity activity : activities) {
+                if (activity.isDone()) {
+                    state.deployItem();
+    
+                for (Thread thread : threads) {
+                    thread.lockDiscussion();
+                }
+                } else {
+                    System.out.println("Cannot deploy item, all activities must be completed first");
+                    return;
+                }
             }
-            } else {
-                System.out.println("Cannot deploy item, all activities must be completed first");
-                return;
-            }
+        } else {
+            state.deployItem();
         }
     }
 

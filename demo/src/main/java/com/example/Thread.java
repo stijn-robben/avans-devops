@@ -35,6 +35,10 @@ public class Thread {
         }
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     public void lockDiscussion() {
         this.locked = true;
     }
