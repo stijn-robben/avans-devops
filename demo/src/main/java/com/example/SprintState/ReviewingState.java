@@ -50,5 +50,9 @@ public class ReviewingState implements ISprintState {
         System.out.println("Sprint has been cancelled");
         item.setState(item.getCancelledState());
     }
-    
+
+    @Override
+    public String toString() {
+        return "Reviewing";
+    }
 }

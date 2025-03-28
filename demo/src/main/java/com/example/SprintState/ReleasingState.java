@@ -51,4 +51,8 @@ public class ReleasingState implements ISprintState {
         item.setState(item.getCancelledState());
     }
     
+    @Override
+    public String toString() {
+        return "Releasing";
+    }
 }

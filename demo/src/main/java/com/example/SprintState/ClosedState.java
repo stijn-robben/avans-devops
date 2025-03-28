@@ -47,4 +47,8 @@ public class ClosedState implements ISprintState {
         System.out.println("Sprint is in closed state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "Closed";
+    }
 }

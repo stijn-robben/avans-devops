@@ -47,4 +47,8 @@ public class CancelledState implements ISprintState{
         System.out.println("Sprint is in cancelled state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "Cancelled";
+    }
 }

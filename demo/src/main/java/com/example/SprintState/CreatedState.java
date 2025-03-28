@@ -50,4 +50,8 @@ public class CreatedState implements ISprintState {
         System.out.println("Sprint is in created state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "Created";
+    }
 }

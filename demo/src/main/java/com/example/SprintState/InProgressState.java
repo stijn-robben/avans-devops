@@ -50,4 +50,8 @@ public class InProgressState implements ISprintState {
         System.out.println("Sprint is in progress state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "In Progress";
+    }
 }

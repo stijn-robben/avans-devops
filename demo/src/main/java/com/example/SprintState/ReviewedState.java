@@ -50,4 +50,8 @@ public class ReviewedState implements ISprintState {
         System.out.println("Sprint is in reviewed state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "Reviewed";
+    }
 }

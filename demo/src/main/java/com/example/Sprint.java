@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,8 +38,9 @@ public abstract class Sprint extends CompositeComponent{
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.state = new CreatedState(this);
+        this.backlogItems = new ArrayList<>();
 
+        this.createdState = new CreatedState(this);
         this.inProgressState = new InProgressState(this);
         this.finishedState = new FinishedState(this);
         this.cancelledState = new CancelledState(this);
@@ -47,6 +49,7 @@ public abstract class Sprint extends CompositeComponent{
         this.releasingState = new ReleasingState(this);
         this.releasedState = new ReleasedState(this);
         this.closedState = new ClosedState(this);
+        this.state = createdState;
 
     }
 
@@ -61,6 +64,10 @@ public abstract class Sprint extends CompositeComponent{
 
     public void notifyObservers(String message) {
         subject.notifyObservers(message);
+    }
+
+    public ISprintState getState() {
+        return state;
     }
 
     public void setStartDate(Date startDate) {
@@ -107,6 +114,10 @@ public abstract class Sprint extends CompositeComponent{
         return linkedPipeline;
     }
 
+    public void setReviewDocument(Document reviewDocument) {
+        this.reviewDocument = reviewDocument;
+    }
+
     public Document getReviewDocument() {
         return reviewDocument;
     }
@@ -125,6 +136,10 @@ public abstract class Sprint extends CompositeComponent{
         } else {
             System.out.println("Cannot remove backlog item from sprint when it is not in created state");
         }
+    }
+
+    public List<BackLogItem> getBacklogItems() {
+        return backlogItems;
     }
 
     public void addTeamMember(TeamMember member) {

@@ -1,10 +1,8 @@
 package com.example;
 
-import com.example.BackLogItem;
 import com.example.TeamMember.ProductOwnerMember;
 import com.example.TeamMember.TeamMember;
 import com.example.TeamMember.TesterMember;
-import com.example.Activity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,7 +32,15 @@ class BackLogItemTest {
         assertTrue(backlogItem.getActivities().contains(activity), "Activiteit moet zijn toegevoegd aan backlog item.");
     }
 
-    
+    @Test
+    void testRemoveActivity() {
+        TeamMember dev = new TesterMember("Alice");
+
+        Activity activity = new Activity("Write unit tests", 12, dev);
+        backlogItem.addActivity(activity);
+        backlogItem.removeActivity(activity);
+        assertFalse(backlogItem.getActivities().contains(activity), "Activiteit moet zijn verwijderd van backlog item.");
+    }
 
     @Test
     void testInitialStateIsToDo() {
@@ -50,6 +56,6 @@ class BackLogItemTest {
     @Test
     void testInvalidStateTransition_DirectToDone() {
         backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
-        assertEquals("ToDo", backlogItem.getState().toString(), "Backlog item moet in Doing status staan.");
+        assertEquals("ToDo", backlogItem.getState().toString(), "Backlog item moet in ToDo status staan.");
     }
 }

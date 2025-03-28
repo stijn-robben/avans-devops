@@ -52,4 +52,8 @@ public class FinishedState implements ISprintState {
         item.setState(item.getCancelledState());
     }
     
+    @Override
+    public String toString() {
+        return "Finished";
+    }
 }

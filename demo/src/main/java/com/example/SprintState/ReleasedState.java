@@ -47,4 +47,8 @@ public class ReleasedState implements ISprintState {
         System.out.println("Sprint is in released state, cannot cancel sprint");
     }
     
+    @Override
+    public String toString() {
+        return "Released";
+    }
 }
