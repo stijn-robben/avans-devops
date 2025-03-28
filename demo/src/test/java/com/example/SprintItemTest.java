@@ -7,7 +7,6 @@ import com.example.Pipeline.Pipeline;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.nio.channels.Pipe;
 import java.util.Date;
 
 class SprintItemTest {

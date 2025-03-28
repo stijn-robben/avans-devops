@@ -33,12 +33,12 @@ jobs:
         run: mvn install
         working-directory: ./demo
 
-      - name: Build and analyze
+      - name: Run tests
+        run: mvn test
+        working-directory: ./demo
+
+      - name: Analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=stijn-robben_avans-devops
-        working-directory: ./demo
-
-      - name: Run tests
-        run: mvn test
         working-directory: ./demo
