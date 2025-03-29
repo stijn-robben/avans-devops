@@ -29,6 +29,9 @@ public class TestedState implements IBacklogState {
     public void deployItem() {
         System.out.println("Backlog item finished testing and is now deployed.");
         item.setState(item.getDoneState());
+        for (com.example.Thread thread : item.getThreads()) {
+            thread.lockDiscussion();
+        }
     }
 
     @Override

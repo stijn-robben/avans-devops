@@ -93,4 +93,29 @@ class BackLogItemTest {
         backlogItem.deployItem();
         assertEquals("Done", backlogItem.getState().toString(), "Backlog item moet in Done status staan.");
     }
+
+    @Test
+    void testValidStateTransition_ToDone_ThreadsClosed() {
+        Message message = new Message("Test message", null);
+        Thread thread = new Thread("Discussion Thread", backlogItem);
+        backlogItem.addDiscussionThread(thread);
+        backlogItem.startBacklogItem();
+        backlogItem.finishImplementingItem();  // Mag alleen als Tested of ReadyForTesting voltooid is
+        backlogItem.startTestingItem();
+        backlogItem.finishTestingItem();
+        backlogItem.deployItem();
+        thread.addMessage(message);
+        assertTrue(thread.getMessages().isEmpty(), "Bericht moet niet zijn toegevoegd aan de discussie thread.");
+    }
+
+    @Test
+    void testInvalidStateTransition_ToDone_ThreadsClosed() {
+        Message message = new Message("Test message", null);
+        Thread thread = new Thread("Discussion Thread", backlogItem);
+        backlogItem.addDiscussionThread(thread);
+        backlogItem.startBacklogItem();
+        backlogItem.deployItem();
+        thread.addMessage(message);
+        assertEquals("Test message", thread.getMessages().getFirst().getContent().toString(), "Bericht moet zijn toegevoegd aan de discussie thread.");
+    }
 }

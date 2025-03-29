@@ -22,6 +22,7 @@ public class FinishedState implements ISprintState {
     @Override
     public void releaseSprintItem() {
         System.out.println("Sprint release has been started");
+        item.getLinkedPipeline().runAllSteps();
         item.setState(item.getReleasingState());
     }
 

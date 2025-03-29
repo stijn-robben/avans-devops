@@ -215,7 +215,6 @@ public abstract class Sprint extends CompositeComponent{
 
     public void releaseSprintItem() {
         if (linkedPipeline != null) {
-            linkedPipeline.runAllSteps();
             state.releaseSprintItem();
         } else {
             System.out.println("Cannot release sprint without a linked pipeline");

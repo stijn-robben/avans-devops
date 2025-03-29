@@ -39,6 +39,9 @@ public class DoneState implements IBacklogState {
     public void revertToTodo() {
         System.out.println("Backlog item is reverted to the todo state.");
         item.setState(item.getToDoState());
+        for (com.example.Thread thread : item.getThreads()) {
+            thread.unlockDiscussion();
+        }
     }
 
     @Override

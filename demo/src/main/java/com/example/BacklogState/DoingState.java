@@ -18,6 +18,7 @@ public class DoingState implements IBacklogState {
     @Override
     public void finishImplementingItem() {
         System.out.println("Backlog item finished implementing");
+        item.notifyObservers("Backlog item \"" + item.getTitle() + "\" is ready for testing");
         item.setState(item.getReadyForTestingState());
     }
 

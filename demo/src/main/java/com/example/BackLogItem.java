@@ -66,6 +66,10 @@ public class BackLogItem extends CompositeComponent {
         return title;
     }
 
+    public List<Thread> getThreads() {
+        return threads;
+    }
+
     public void addActivity(Activity activity) {
         activities.add(activity);
     }
@@ -101,7 +105,6 @@ public class BackLogItem extends CompositeComponent {
 
     public void finishImplementingItem() {
         state.finishImplementingItem();
-        notifyObservers("Backlog item \"" + title + "\" is ready for testing");
     }
 
     public void startTestingItem() {
@@ -113,30 +116,24 @@ public class BackLogItem extends CompositeComponent {
     }
 
     public void deployItem() {
-        if(!activities.isEmpty()) {
+        if (!activities.isEmpty()) {
+            // Check if all activities are done
             for (Activity activity : activities) {
-                if (activity.isDone()) {
-                    state.deployItem();
-    
-                for (Thread thread : threads) {
-                    thread.lockDiscussion();
-                }
-                } else {
+                if (!activity.isDone()) {
                     System.out.println("Cannot deploy item, all activities must be completed first");
                     return;
                 }
             }
+            // If all are done, proceed with deployment
+            state.deployItem();
         } else {
             state.deployItem();
         }
     }
+    
 
     public void revertToTodo() {
         state.revertToTodo();
-
-        for (Thread thread : threads) {
-            thread.unlockDiscussion();
-        }
     }
 
     public void revertToReadyForTesting() {
