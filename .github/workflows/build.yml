@@ -19,8 +19,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          distribution: "temurin" # Changed from 'adopt' to 'temurin' (latest supported version)
-          java-version: "17" # Java 23 is not widely supported, use LTS version
+          distribution: "temurin"
+          java-version: "17"
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
