@@ -17,4 +17,9 @@ public class DeploymentSprint extends Sprint {
     public void finishReviewingSprintItem() {
         System.out.println("Cannot review Deploymentsprint");
     } 
+
+    @Override
+    public void setReviewDocument(Document reviewDocument) {
+        System.out.println("Cannot set review document for deploymentsprint");
+    }
 }
