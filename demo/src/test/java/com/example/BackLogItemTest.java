@@ -116,6 +116,6 @@ class BackLogItemTest {
         backlogItem.startBacklogItem();
         backlogItem.deployItem();
         thread.addMessage(message);
-        assertEquals("Test message", thread.getMessages().getFirst().getContent().toString(), "Bericht moet zijn toegevoegd aan de discussie thread.");
+        assertEquals("Test message", thread.getMessages().get(0).getContent().toString(), "Bericht moet zijn toegevoegd aan de discussie thread.");
     }
 }
